@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import logo from './logo.svg'
 import './assets/css/App.css'
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
         </a>
       </header>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
