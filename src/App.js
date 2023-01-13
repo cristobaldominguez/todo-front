@@ -1,4 +1,6 @@
 import './assets/css/App.css'
+import NavBar from './components/navbar'
+
 
 function App() {
   return (
