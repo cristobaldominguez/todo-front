@@ -5,9 +5,11 @@ import NavBar from './components/navbar'
 
 // Views
 import Home from './views/home'
-import Login from './views/login'
-import SignUp from './views/signup'
 import Todos from './views/todos'
+import Login from './views/Login'
+import SignUp from './views/Signup'
+// Providers
+import AuthProvider from './providers/AuthProvider'
 // Styles
 import './assets/styles'
 
@@ -20,12 +22,12 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/todos/:id" element={<Todos />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/signout" element={<Login />} />
         </Routes>
         </div>
     </div>
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/signout" element={<Login />} />
   )
 }
 
