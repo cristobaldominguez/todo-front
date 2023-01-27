@@ -1,0 +1,9 @@
+.info:before {
+  content: '';
+  height: 500px;
+  width: 5px;
+  background-color: #4F46E5;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
