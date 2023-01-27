@@ -5,7 +5,6 @@ import { BrowserRouter } from 'react-router-dom'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 
-import './assets/css/fonts.css'
 import './assets/css/index.css'
 
 const root = createRoot(document.getElementById('root'))

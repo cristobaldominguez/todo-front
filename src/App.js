@@ -8,6 +8,8 @@ import Home from './views/home'
 import Login from './views/login'
 import SignUp from './views/signup'
 import Todos from './views/todos'
+// Styles
+import './assets/styles'
 
 function App() {
   return (
