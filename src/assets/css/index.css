@@ -5,3 +5,35 @@
 body {
   margin: 0;
 }
+
+div[contentEditable] {
+  width: 100%;
+  min-width: 10em;
+}
+
+.todos {      
+  @apply my-12;
+  @apply mx-auto;
+  @apply max-w-3xl;
+  @apply px-6;
+}
+
+.todos__todo {
+  @apply flex;
+  @apply justify-between;
+  @apply items-center;
+  @apply border-b;
+  @apply border-slate-200;
+  @apply dark:border-b-slate-700;
+  @apply last:border-b-0;
+  @apply py-3;
+  @apply border-l-4;
+  @apply border-l-transparent;
+}
+
+.todos__plus {
+  @apply block;
+  @apply text-indigo-600;
+  @apply dark:text-indigo-500;
+  @apply w-10 mx-auto;
+}
