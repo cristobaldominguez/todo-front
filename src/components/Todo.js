@@ -22,6 +22,11 @@ function Todo({ id, content, done = false, sort, createTodo, updateTodo, deleteT
     toggleDone(response)
   }
 
+  const onDeleteTodo = (e) => {
+    e.preventDefault()
+    deleteTodo(new_todo.id)
+  }
+
   const styles = ['text-gray-700 dark:text-white', done && 'line-through', 'w-100'].join(' ')
 
   return <li data-sort={sort} data-todo={id} className="todos__todo">
@@ -29,7 +34,7 @@ function Todo({ id, content, done = false, sort, createTodo, updateTodo, deleteT
     <Link onClick={onToggleDone} href="#"><i className={done ? 'text-gray-700 dark:text-white icon-checked-checkbox' : 'dark:text-white icon-not-checked-o'}></i></Link>
     <div className={styles} contentEditable="true" suppressContentEditableWarning={true} onKeyUp={contentHandleKeyUp} onBlur={handleBlur}>{ content }</div>
   </div>
-  <Link href="#" onClick={e => deleteTodo(e, id)}>
+  <Link href="#" onClick={onDeleteTodo}>
     <i className="text-gray-700 dark:text-gray-400 icon-trash-can"></i>
   </Link>
 </li>
