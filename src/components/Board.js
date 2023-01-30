@@ -1,13 +1,17 @@
 import { Link } from 'react-router-dom'
 import humanizedTimeSpan from '../helpers/humanizedTimeSpan'
 
-function Board({ id, name, icon, colour, edited, created }) {
+import board_colors from '../helpers/board_colours'
+
+function Board({ id, name, icon, colour = 'blue', edited, created }) {
   const link = `/boards/${id}`
   const date = edited ? `Edited ${humanizedTimeSpan(edited)}` : `Created ${humanizedTimeSpan(created)}`
+  const colours = board_colors[colour].container
+
   return <li>
-    <Link to={link} className="flex items-start rounded-xl bg-white dark:bg-gray-700 p-4 shadow-lg border-solid border relative">
-      <div className="flex h-12 w-12 items-center justify-center rounded-full border border-blue-100 bg-blue-50 dark:bg-blue-300 text-blue-400">
-        <i className={`icon-${icon} text-2xl dark:text-blue-600`}></i>
+    <Link to={link} className="flex items-start rounded-xl bg-white border-gray-200 dark:bg-gray-700 dark:border-gray-600 p-4 shadow-lg border-solid border relative">
+      <div className={`flex h-14 w-14 items-center justify-center rounded-full border-2 ${colours}`}>
+        <i className={`icon-${icon} text-2xl `}></i>
       </div>
 
       <div className="ml-4 dark:text-white">
