@@ -22,6 +22,7 @@ import NotFound from './views/NotFound'
 // Providers
 import AuthProvider from './providers/AuthProvider'
 import NotificationProvider from './providers/NotificationProvider'
+import DarkModeProvider from './providers/DarkModeProvider'
 
 // Styles
 import './assets/styles'
@@ -30,27 +31,29 @@ function App() {
   return (
     <NotificationProvider>
       <AuthProvider>
-        <NavBar />
-        <Notifications />
-        <div className="mx-auto max-w-7xl px-6">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/signout" element={<Login />} />
+        <DarkModeProvider>
+          <NavBar />
+          <Notifications />
+          <div className="mx-auto max-w-7xl px-6">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<SignUp />} />
+              <Route path="/signout" element={<Login />} />
 
-            {/* ProtectedRoutes */}
-            <Route element={<PrivateRoutes />}>
-              <Route exact path="/boards" element={<Boards />} />
-              <Route path="/boards/:id" element={<Todos />} />
-              <Route path="/profile" element={<Profile />} />
-            </Route>
-            {/* /ProtectedRoutes */}
+              {/* ProtectedRoutes */}
+              <Route element={<PrivateRoutes />}>
+                <Route exact path="/boards" element={<Boards />} />
+                <Route path="/boards/:id" element={<Todos />} />
+                <Route path="/profile" element={<Profile />} />
+              </Route>
+              {/* /ProtectedRoutes */}
 
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-          </div>
-        <Footer />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+            </div>
+          <Footer />
+        </DarkModeProvider>
       </AuthProvider>
     </NotificationProvider>
   )

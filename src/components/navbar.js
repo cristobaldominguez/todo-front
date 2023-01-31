@@ -7,6 +7,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import useAuth from '../hooks/useAuth'
 
 import UserDropdownMenu from './UserDropdownMenu'
+import DarkModeToggle from './DarkModeToggle'
 
 function NavBar() {
   const { user, setUser } = useAuth()
@@ -106,7 +107,12 @@ function NavBar() {
                   <NavLink to="#" className="col-span-6 text-base font-medium text-gray-900 hover:text-gray-700">
                     Account settings
                   </NavLink>
-                  <NavLink to="#" onClick={logoutHandler} className="col-span-6 text-base font-medium text-gray-900 hover:text-gray-700">
+                  <div>
+                  <DarkModeToggle>
+                    <span className="ml-3 text-gray-900 dark:text-gray-300 mobile_nav--dark-mode-text">Dark Mode</span>
+                  </DarkModeToggle>
+                  </div>
+                  <NavLink to="#" onClick={logoutHandler} className="col-span-6 text-base font-medium text-gray-900 dark:text-gray-100 hover:text-gray-700">
                     Logout
                   </NavLink>
                 </div>}
