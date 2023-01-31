@@ -6,6 +6,8 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
 import useAuth from '../hooks/useAuth'
 
+import UserDropdownMenu from './UserDropdownMenu'
+
 function NavBar() {
   const { user, setUser } = useAuth()
 
@@ -16,12 +18,12 @@ function NavBar() {
 
   return (
     <header className="bg-white dark:bg-gray-900">
-      <Popover className="relative border-b-2 border-gray-100 dark:border-gray-700">
+      <Popover className="relative border-b-2 border-gray-100 dark:border-gray-700 z-10">
         <div className="mx-auto max-w-7xl px-6">
           <div className="flex items-center justify-between py-6 md:justify-start md:space-x-10">
             <div className="flex justify-start lg:w-0 lg:flex-1">
               <NavLink to="/" className="text-indigo-600 dark:text-white">
-                <span className="sr-only">Your Company</span>
+                <span className="sr-only">CheckIt</span>
                 <i className="icon-checkit text-4xl"></i>
               </NavLink>
             </div>
@@ -38,12 +40,6 @@ function NavBar() {
               <NavLink to="/boards" className="text-base font-medium text-gray-500 dark:text-white hover:text-gray-900">
                 Boards
               </NavLink>
-              <NavLink to="/login" className="text-base font-medium text-gray-500 dark:text-white hover:text-gray-900">
-                Pricing
-              </NavLink>
-              <NavLink to="/login" className="text-base font-medium text-gray-500 dark:text-white hover:text-gray-900">
-                Docs
-              </NavLink>
             </Popover.Group>
             <div className="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
               {!user && <NavLink to="/login" className="whitespace-nowrap text-base font-medium text-gray-500 dark:text-white hover:text-gray-900">
@@ -52,8 +48,7 @@ function NavBar() {
               {!user && <NavLink to="/signup" className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700">
                 Sign up
               </NavLink>}
-              {user && <NavLink to="#"><i className='icon-user text-2xl text-white'></i></NavLink>}
-              {user && <button type="button" onClick={logoutHandler} className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700">Logout</button>}
+              {user && <UserDropdownMenu logout={logoutHandler} />}
             </div>
           </div>
         </div>
@@ -98,17 +93,23 @@ function NavBar() {
                     Boards
                   </NavLink>
                 </div>
-                <div>
+                {!user && <div className='text-center text-base font-medium'>
                   <NavLink to="/signup" className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700">
                     Sign up
                   </NavLink>
-                  <p className="mt-6 text-center text-base font-medium text-gray-500">
-                    Existing customer?{' '}
-                    <NavLink to="/login" className="text-indigo-600 hover:text-indigo-500">
-                      Log In
-                    </NavLink>
-                  </p>
-                </div>
+                  <NavLink to="/login" className="block mt-6 text-indigo-600 hover:text-indigo-500">
+                    Log In
+                  </NavLink>
+                </div>}
+                {user && <div className="grid grid-cols-4 gap-y-4 gap-x-8 border-t pt-4">
+                  <p className='text-base font-medium text-gray-900 '>Hi {user.first_name}!</p>
+                  <NavLink to="#" className="col-span-6 text-base font-medium text-gray-900 hover:text-gray-700">
+                    Account settings
+                  </NavLink>
+                  <NavLink to="#" onClick={logoutHandler} className="col-span-6 text-base font-medium text-gray-900 hover:text-gray-700">
+                    Logout
+                  </NavLink>
+                </div>}
               </div>
             </div>
           </Popover.Panel>
