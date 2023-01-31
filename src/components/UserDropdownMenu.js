@@ -4,6 +4,8 @@ import { Menu, Transition } from '@headlessui/react'
 
 import useAuth from '../hooks/useAuth'
 
+import DarkModeToggle from './DarkModeToggle'
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
@@ -46,19 +48,11 @@ function UserDropdownMenu({ logout }) {
                 </Link>
               )}
             </Menu.Item>
-            <Menu.Item>
-              {({ active }) => (
-                <Link
-                  to="#"
-                  className={classNames(
-                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700 dark:text-gray-100',
-                    'block px-4 py-2 text-sm'
-                  )}
-                >
-                  Support
-                </Link>
-              )}
-            </Menu.Item>
+            <div className='px-4 pt-2 '>
+              <DarkModeToggle>
+                <span className="ml-3 text-sm text-gray-900 dark:text-gray-300">Dark Mode</span>
+              </DarkModeToggle>
+            </div>
             <Menu.Item>
               {({ active }) => (
                 <Link

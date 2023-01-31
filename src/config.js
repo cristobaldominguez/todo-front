@@ -1,5 +1,6 @@
 const api_url = 'http://localhost:3000'
 const user_local_storage_key = 'user'
+const dark_mode_local_storage_key = 'dark_mode'
 
 const notification_types = {
   info: {
@@ -22,5 +23,6 @@ const notification_types = {
 export {
   api_url,
   notification_types,
-  user_local_storage_key
+  user_local_storage_key,
+  dark_mode_local_storage_key
 }
