@@ -10,11 +10,11 @@ import UserDropdownMenu from './UserDropdownMenu'
 import DarkModeToggle from './DarkModeToggle'
 
 function NavBar() {
-  const { user, setUser } = useAuth()
+  const { user, logout } = useAuth()
 
   const logoutHandler = (e) => {
     e.preventDefault()
-    setUser({})
+    logout()
   }
 
   return (
