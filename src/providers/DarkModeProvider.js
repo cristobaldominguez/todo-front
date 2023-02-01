@@ -18,9 +18,9 @@ const DarkModeProvider = ({ children }) => {
   useEffect(() => {
     if (!user) return
 
-    localStorage.setItem(dark_mode_local_storage_key, dark_mode)
-    DarkModeService(dark_mode)
-  })
+    setDarkModeHandler(dark_mode)
+    // eslint-disable-next-line
+  }, [dark_mode])
 
   const setDarkModeHandler = async (value) => {
     setDarkMode(value)

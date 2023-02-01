@@ -1,7 +1,8 @@
 import { useState } from 'react'
 
+// import getCurrentUser from '../helpers/user'
+import isEmpty from '../helpers/isEmpty'
 import AuthContext from '../context/AuthContext'
-import getCurrentUser from '../helpers/user'
 import { user_local_storage_key } from '../config'
 
 const AuthProvider = ({ children }) => {
@@ -10,15 +11,15 @@ const AuthProvider = ({ children }) => {
   const [current_user, setUser] = useState(saved_user)
 
   const setUserHandler = (user = {}) => {
-    const user_from_localstorage = getCurrentUser()
-
-    if (user_from_localstorage && current_user.user) {
-      localStorage.removeItem(user_local_storage_key)
-      return setUser(null)
-    }
+    if (isEmpty(user)) return
 
     localStorage.setItem(user_local_storage_key, JSON.stringify(user))
     return setUser(user)
+  }
+
+  const logoutHandler = () => {
+    localStorage.removeItem(user_local_storage_key)
+    return setUser(null)
   }
 
   const auth_value = {
@@ -26,6 +27,7 @@ const AuthProvider = ({ children }) => {
     token: current_user?.accessToken,
     is_authenticated: !!current_user?.user?.id,
     setUser: setUserHandler,
+    logout: logoutHandler
   }
 
   return <AuthContext.Provider value={auth_value}>
