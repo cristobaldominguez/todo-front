@@ -103,11 +103,11 @@ function NavBar() {
                   </NavLink>
                 </div>}
                 {user && <div className="grid grid-cols-4 gap-y-4 gap-x-8 border-t pt-4">
-                  <p className='text-base font-medium text-gray-900 '>Hi {user.first_name}!</p>
+                  <p className='col-span-6 text-base font-medium text-gray-900 '>Hi {user.first_name}!</p>
                   <NavLink to="#" className="col-span-6 text-base font-medium text-gray-900 hover:text-gray-700">
                     Account settings
                   </NavLink>
-                  <div>
+                  <div className='col-span-6'>
                   <DarkModeToggle>
                     <span className="ml-3 text-gray-900 dark:text-gray-300 mobile_nav--dark-mode-text">Dark Mode</span>
                   </DarkModeToggle>

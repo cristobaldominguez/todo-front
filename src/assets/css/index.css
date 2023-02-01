@@ -37,3 +37,7 @@ div[contentEditable] {
   @apply dark:text-indigo-500;
   @apply w-10 mx-auto;
 }
+
+.mobile_nav--dark-mode-text {
+  margin-top: -3px;
+}
