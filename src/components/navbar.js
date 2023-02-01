@@ -64,7 +64,7 @@ function NavBar() {
           leaveTo="opacity-0 scale-95"
         >
           <Popover.Panel focus className="absolute inset-x-0 top-0 origin-top-right transform p-2 transition md:hidden">
-            <div className="divide-y-2 divide-gray-50 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+            <div className="divide-y-2 divide-gray-50 dark:divide-gray-800 rounded-lg bg-white dark:bg-gray-900 shadow-lg ring-1 ring-black ring-opacity-5">
               <div className="px-5 pt-5 pb-6">
                 <div className="flex items-center justify-between">
                   <div>
@@ -87,24 +87,24 @@ function NavBar() {
               </div>
               <div className="space-y-6 py-6 px-5">
                 <div className="grid grid-cols-4 gap-y-4 gap-x-8">
-                  <NavLink to="/" className="col-span-6 text-base font-medium text-gray-900 hover:text-gray-700">
+                  <NavLink to="/" className="col-span-6 text-base font-medium text-gray-900 dark:text-gray-100 hover:text-gray-700">
                     Home
                   </NavLink>
-                  <NavLink to="/boards" className="col-span-6 text-base font-medium text-gray-900 hover:text-gray-700">
+                  <NavLink to="/boards" className="col-span-6 text-base font-medium text-gray-900 dark:text-gray-100 hover:text-gray-700">
                     Boards
                   </NavLink>
                 </div>
                 {!user && <div className='text-center text-base font-medium'>
-                  <NavLink to="/signup" className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700">
+                  <NavLink to="/signup" className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 dark:bg-indigo-400 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700">
                     Sign up
                   </NavLink>
-                  <NavLink to="/login" className="block mt-6 text-indigo-600 hover:text-indigo-500">
+                  <NavLink to="/login" className="block mt-6 text-indigo-600 dark:text-indigo-400 hover:text-indigo-500">
                     Log In
                   </NavLink>
                 </div>}
-                {user && <div className="grid grid-cols-4 gap-y-4 gap-x-8 border-t pt-4">
-                  <p className='col-span-6 text-base font-medium text-gray-900 '>Hi {user.first_name}!</p>
-                  <NavLink to="#" className="col-span-6 text-base font-medium text-gray-900 hover:text-gray-700">
+                {user && <div className="grid grid-cols-4 gap-y-4 gap-x-8 border-t dark:border-gray-800 pt-4">
+                  <p className="text-base font-medium text-gray-900 dark:text-gray-100">Hi {user.first_name}!</p>
+                  <NavLink to="#" className="col-span-6 text-base font-medium text-gray-900 dark:text-gray-100 hover:text-gray-700">
                     Account settings
                   </NavLink>
                   <div className='col-span-6'>
