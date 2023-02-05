@@ -1,25 +1,32 @@
 import { api_url } from '../config'
 
-async function Http({ method = 'GET', url = '/boards', token = null, body = null }) {
+async function Http({ method = 'GET', url = '/boards', token = null, body = null, content_type = true }) {
   if (!url.startsWith('/')) throw new Error('URL must start with /')
 
   const full_url = new URL(api_url + url)
   const config = {
     method,
     headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      'Accept': 'application/json'
     }
+  }
+
+  if (content_type) {
+    config.headers['Content-Type'] = 'application/json'
   }
 
   if (token) {
     config.headers.Authorization = `Bearer ${token}`
   }
 
-  if (body) {
+  if (body && content_type) {
     config.body = JSON.stringify(body)
   }
 
+  if (body && !content_type) {
+    config.body = body
+  }
+  
   try {
     const response = await fetch(full_url.href, config)
     if (response.error) throw new Error(response.error.message)
