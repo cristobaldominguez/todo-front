@@ -12,7 +12,8 @@ function Profile() {
   const [last_name, setLastName] = useState(user.last_name)
   const [email, setEmail] = useState(user.email)
 
-  const profile_image_url = `${api_url}/profile/${user.photo.filename}@2x.${user.photo.extension}`
+  const default_photo = user?.photo?.filename === 'default'
+  const profile_image_url = !default_photo && `${api_url}/profile/${user.photo.filename}@2x.${user.photo.extension}`
 
   const sendBackChanges = async (changed_value) => {
     const key = Object.keys(changed_value)[0]
@@ -117,13 +118,7 @@ function Profile() {
                     </label>
                     <div className="mt-1 flex items-center">
                       <span className="inline-block h-19 w-19 overflow-hidden rounded bg-gray-100 dark:bg-gray-800">
-                        { !user.photo.filename ? <svg
-                          className="h-full w-full text-gray-300"
-                          fill="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
-                        </svg> : <img src={profile_image_url} className="inline-block h-19 w-19 overflow-hidden rounded" alt={`${user.first_name} ${user.last_name}`} />}
+                        { default_photo ? <i className='icon-user text-5xl dark:text-white text-gray-600'></i> : <img src={profile_image_url} className="inline-block h-19 w-19 overflow-hidden rounded" alt={`${user.first_name} ${user.last_name}`} />}
                       </span>
                     </div>
                   </div>

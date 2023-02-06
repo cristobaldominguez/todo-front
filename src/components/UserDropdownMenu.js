@@ -12,15 +12,15 @@ function classNames(...classes) {
 
 function UserDropdownMenu({ logout }) {
   const { user } = useAuth()
-  const user_photo = (user && user.photo) ? user.photo : { filename: 'default', extension: 'jpg' }
-  const profile_image_url = `${api_url}/profile/${user_photo.filename}@2x.${user_photo.extension}`
+  const default_photo = user?.photo?.filename === 'default'
 
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
         <Menu.Button className="border-0 bg-transparent text-md dark:text-gray-600 dark:hover:text-gray-400">
           <div className="rounded overflow-hidden w-12 h-12">
-            <img src={profile_image_url} alt="" />
+            {default_photo && <i className='icon-user text-2xl dark:text-white text-gray-600'></i>}
+            {!default_photo && <img src={`${api_url}/profile/${user.photo.filename}@2x.${user.photo.extension}`} alt="" />}
           </div>
         </Menu.Button>
       </div>
