@@ -1,6 +1,5 @@
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { LockClosedIcon } from '@heroicons/react/20/solid'
-import { Link } from 'react-router-dom'
 
 import useFetch from '../hooks/useFetch'
 
