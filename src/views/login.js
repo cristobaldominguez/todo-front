@@ -2,11 +2,9 @@ import { useNavigate } from 'react-router-dom'
 import { LockClosedIcon } from '@heroicons/react/20/solid'
 import { Link } from 'react-router-dom'
 
-import useAuth from '../hooks/useAuth'
 import useFetch from '../hooks/useFetch'
 
 function Login() {
-  const { setUser } = useAuth()
   const { post } = useFetch()
   const navigate = useNavigate()
 
@@ -22,7 +20,6 @@ function Login() {
       }
 
       if (data) {
-        setUser(data)
         return navigate('/boards')
       }
 
