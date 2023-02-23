@@ -11,20 +11,8 @@ function Login() {
     e.preventDefault()
 
     const credentials = Object.fromEntries(new FormData(e.target))
-    try {
-      const { data, error } = await post({ url: '/auth/login', body: credentials })
-
-      if (error) {
-        throw new Error(error)
-      }
-
-      if (data) {
-        return navigate('/boards')
-      }
-
-    } catch (error) {
-      console.error(error)
-    }
+    const { data } = await post({ url: '/auth/login', body: credentials })
+    if (data) return navigate('/boards')
   }
 
   return (

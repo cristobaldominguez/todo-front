@@ -29,10 +29,10 @@ async function Http({ method = 'GET', url = '/boards', token = null, body = null
   
   try {
     const response = await fetch(full_url.href, config)
-    if (response.error) throw new Error(response.error.message)
-
     const data = await response.json()
-    return { data, loading: false }
+    if (!response.ok) throw data.error
+
+    return { data, loading: false, error: null }
 
   } catch (error) {
     return { data: null, loading: false, error }

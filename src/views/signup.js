@@ -14,20 +14,11 @@ function SignUp() {
 
     // ToDo: Validate data
 
-    try {
-      const { data, error } = await post({ url: '/auth/signup', body: user_data })
+    const { data, error } = await post({ url: '/auth/signup', body: user_data })
+    if (error) return false
 
-      if (error) {
-        throw new Error(error)
-      }
-
-      // console.log(data)
-      setUser(data)
-      return navigate('/boards')
-
-    } catch (error) {
-      throw new Error(error)
-    }
+    setUser(data)
+    return navigate('/boards')
   }
 
   return (
