@@ -2,10 +2,10 @@ import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 import styles from './notification.module.css'
-import { notification_types as types } from '../config'
+import { notification_types as types } from '../notificationTypes'
 import useNotification from '../hooks/useNotification'
 
-const Notification = ({ id, type = 'info', title, content, icon = true, timer = {} }) => {
+const Notification = ({ id, type = 'info', title, content, timer = {} }) => {
   const { removeNotification } = useNotification()
 
   useEffect(() => {
@@ -23,14 +23,13 @@ const Notification = ({ id, type = 'info', title, content, icon = true, timer = 
     removeNotification(id)
   }
 
+  const notification_type = types[type]
   const notification_classes = `${styles[type]} relative overflow-hidden shadow-lg rounded-lg bg-white dark:bg-gray-800 border-solid border max-w-sm mx-auto m-4 p-4 text-gray-700 dark:text-white dark:border-gray-700 flex flex-row`
-  const icon_classes = `icon-${types[type].icon} ${types[type].colors.light.text} ${types[type].colors.dark.text} text-lg`
+  const icon_classes = `icon-${notification_type.icon} ${notification_type.colors.light.text} ${notification_type.colors.dark.text} text-lg`
 
   return (
     <div className={notification_classes}>
-      <div className="pr-3">
-        {icon && <i className={icon_classes}></i>}
-      </div>
+      <div className="pr-3"><i className={icon_classes}></i></div>
       <div className="grow">
         <div className="text-sm pb-2 font-semibold">{title}</div>
         <div className="text-sm text-gray-600 dark:text-gray-400 flex-auto tracking-tight">{content}</div>

@@ -7,3 +7,13 @@
   left: 0;
   top: 0;
 }
+
+.error:before {
+  content: '';
+  height: 500px;
+  width: 5px;
+  background-color: #e11d48;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
