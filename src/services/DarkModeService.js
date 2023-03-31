@@ -1,6 +1,5 @@
 function DarkModePrinter(dark_mode) {
-  const html_tag = document.querySelector('html')
-  const html = html_tag.classList
+  const html = document.documentElement.classList
 
   if (dark_mode) {
     html.add('dark')

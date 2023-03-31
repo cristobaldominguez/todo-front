@@ -11,7 +11,7 @@ div[contentEditable] {
   min-width: 10em;
 }
 
-.todos {      
+.todos {
   @apply my-12;
   @apply mx-auto;
   @apply max-w-3xl;
