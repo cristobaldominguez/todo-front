@@ -20,6 +20,7 @@ const NotificationProvider = ({ children }) => {
     notifications,
     setNotifications: setNotificationsHandler,
     removeNotification: removeNotificationsHandler
+    // eslint-disable-next-line
   }), [notifications])
 
   return <NotificationContext.Provider value={notification_value}>

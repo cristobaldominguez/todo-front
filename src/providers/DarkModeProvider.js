@@ -35,6 +35,7 @@ const DarkModeProvider = ({ children }) => {
   const dark_mode_value = useMemo(() => ({ 
     dark_mode,
     setDarkMode: setDarkModeHandler
+    // eslint-disable-next-line
   }), [dark_mode])
 
   return <DarkModeContext.Provider value={dark_mode_value}>
