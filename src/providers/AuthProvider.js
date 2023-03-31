@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 
 // import getCurrentUser from '../helpers/user'
 import isEmpty from '../helpers/isEmpty'
@@ -22,13 +22,13 @@ const AuthProvider = ({ children }) => {
     return setUser(null)
   }
 
-  const auth_value = {
+  const auth_value = useMemo(() => ({
     user: current_user?.user || null,
     token: current_user?.accessToken,
     is_authenticated: !!current_user?.user?.id,
     setUser: setUserHandler,
     logout: logoutHandler
-  }
+  }), [current_user])
 
   return <AuthContext.Provider value={auth_value}>
     {children}

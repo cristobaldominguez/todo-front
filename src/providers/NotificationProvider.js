@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { v4 as uuid } from 'uuid'
 
 import NotificationContext from '../context/NotificationContext'
@@ -16,11 +16,11 @@ const NotificationProvider = ({ children }) => {
     setNotifications(filtered_notifications)
   }
 
-  const notification_value = {
+  const notification_value = useMemo(() => ({
     notifications,
     setNotifications: setNotificationsHandler,
     removeNotification: removeNotificationsHandler
-  }
+  }), [notifications])
 
   return <NotificationContext.Provider value={notification_value}>
     {children}

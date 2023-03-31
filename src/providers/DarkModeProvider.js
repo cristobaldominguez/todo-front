@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 
 import useAuth from '../hooks/useAuth'
 import useFetch from '../hooks/useFetch'
@@ -32,10 +32,10 @@ const DarkModeProvider = ({ children }) => {
     await put({ url: `/users/${user.id}`, body: { dark_mode } })
   }
 
-  const dark_mode_value = { 
+  const dark_mode_value = useMemo(() => ({ 
     dark_mode,
     setDarkMode: setDarkModeHandler
-  }
+  }), [dark_mode])
 
   return <DarkModeContext.Provider value={dark_mode_value}>
     {children}
